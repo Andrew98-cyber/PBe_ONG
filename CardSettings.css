@@ -1,0 +1,10 @@
+div.title{
+    height: 50px;
+}
+
+
+@media only screen and (max-width: 1483px) {
+    .title{
+        height: 100px;
+    }
+}
