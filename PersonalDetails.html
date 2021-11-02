@@ -44,7 +44,12 @@
 
                             <label for="occupation" class="col-sm-12 col-form-label">Occupation</label>
 
-                            <div class="col-sm-12 mb-2">
+                            <!-- <div class="num-Book col-sm-9">
+                                <input type="text" class="form-control mb-2 occupation-input"
+                                    placeholder="Memorable Answer" value="ACCOUNTANT" disabled>
+                            </div> -->
+
+                            <div class="col-sm-9 mb-2 occupation-selection">
 
                                 <select class="form-select" id="occupation" disabled>
                                     <optgroup label="Accounting / Finance / Admin / HR"></optgroup>
@@ -221,15 +226,21 @@
 
                             </div>
 
+                            <div class="num-Book col-sm-3">
+                                <a id="edit-Occupation-btn" class="btn btn-dark  float-end disabled"
+                                    aria-disabled="true"> Edit </a>
+                            </div>
+
                         </div>
 
                         <div class="row mb-2">
 
                             <label for="memorableQuestion" class="col-sm-12 col-form-label">Memorable Question</label>
 
-                            <div class="col-sm-12 mb-2">
+                            <div class="col-sm-9 mb-2">
 
-                                <select class="form-select" aria-label="Default select example" disabled>
+                                <select class="form-select" aria-label="Default select example" id="security-question"
+                                    disabled>
                                     <option>What is my mother's maiden name?</option>
                                     <option>What is my favourite food?</option>
                                     <option>What is my dream car?</option>
@@ -239,14 +250,30 @@
 
                             </div>
 
+                            <div class="num-Book col-sm-3">
+                                <a id="edit-Question-btn" class="btn btn-dark  float-end disabled" aria-disabled="true">
+                                    Edit
+                                </a>
+                            </div>
+
                         </div>
 
-                        <div class="row mb-2">
+                        <div class="row mb-2 memorable-ans-section" hidden>
 
                             <label class="col-sm-12 col-form-label">Memorable Answer</label>
 
                             <div class="num-Book col-sm-12">
                                 <input type="text" class="form-control mb-2" placeholder="Memorable Answer" disabled>
+                            </div>
+
+                        </div>
+
+                        <div class="row mb-2 memorable-ans-section">
+
+                            <label class="col-sm-12 col-form-label">Email</label>
+
+                            <div class="num-Book col-sm-12">
+                                <input type="text" class="form-control mb-2" placeholder="Email" disabled>
                             </div>
 
                         </div>
@@ -358,7 +385,7 @@
                                 </div>
 
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 rightReference">
-                                    <label>RR232382989FH</label>
+                                    <label>935599</label>
                                 </div>
 
                             </div>
@@ -371,6 +398,18 @@
 
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 rightReference">
                                     <label>DOCTOR</label>
+                                </div>
+
+                            </div>
+
+                            <div class="row detailsRow">
+
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 leftReference">
+                                    <label>Email</label>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 rightReference">
+                                    <label>test@test.com</label>
                                 </div>
 
                             </div>
@@ -422,17 +461,7 @@
 
                             </div>
 
-                            <div class="row detailsRow">
 
-                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 leftReference">
-                                    <label>HP Num</label>
-                                </div>
-
-                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 rightReference">
-                                    <label>0123456789</label>
-                                </div>
-
-                            </div>
 
                         </div>
                         <div class="row my-5 last-row">
@@ -443,6 +472,15 @@
                             </div>
                         </div>
 
+                    </div>
+
+                    <div class="alert alert-info col-12 col-lg-8" role="alert">
+                        <b>Note</b><br>
+                        <ul>
+                            <li>For Credit / Debit card contact details, please update information in Change Credit /
+                                Debit
+                                card contact information tab.</li>
+                        </ul>
                     </div>
 
 
@@ -465,10 +503,27 @@
                 $(this).hide();
                 $('#next-btn').show();
                 $("input").prop('disabled', false);
-                $("select").prop('disabled', false);
+                $(".occupation-input").prop('disabled', true);
+                $('#edit-Occupation-btn').removeClass('disabled');
+                $('#edit-Question-btn').removeClass('disabled');
             });
         });
 
+
+        $('#edit-Occupation-btn').on('click', function () {
+            $(".occupation-input").prop('disabled', false);
+            $("#occupation").prop('disabled', false);
+        });
+
+        $('#edit-Question-btn').on('click', function () {
+            $("#security-question").prop('disabled', false);
+            $(".memorable-ans-section").prop("hidden", false);
+        });
+
+        $("#occupation").change(function () {
+            var select = $("#occupation option:selected").text();
+            $(".occupation-input").val(select);
+        });
 
         $('#next-btn').on('click', function () {
             Swal.fire({
