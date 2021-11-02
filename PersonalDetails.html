@@ -9,10 +9,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="/fontawesome/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <title>Personal Details</title>
+
+    <style>
+        .editBtn {
+            background-color: transparent !important;
+            color: #212529 !important;
+            border: 1px solid #212529 !important;
+            cursor: pointer !important;
+        }
+
+        .cancelBtn {
+            background-color: transparent !important;
+            color: #D64354 !important;
+            border: 1px solid #D64354 !important;
+            cursor: pointer !important;
+        }
+    </style>
 
 </head>
 
@@ -42,16 +60,20 @@
 
                         <div class="row mb-2">
 
-                            <label for="occupation" class="col-sm-12 col-form-label">Occupation</label>
+                            <label for="occupation" class="col-sm-9 col-form-label">Occupation</label>
 
-                            <!-- <div class="num-Book col-sm-9">
-                                <input type="text" class="form-control mb-2 occupation-input"
-                                    placeholder="Memorable Answer" value="ACCOUNTANT" disabled>
-                            </div> -->
+                            <div class="col-sm-3 editAndSaveBtn text-end mt-3">
 
-                            <div class="col-sm-9 mb-2 occupation-selection">
+                                <span class="editBtn badge bg-warning text-dark editBadge ms-1 mb-1 p-1">
+                                    <i class="far fa-edit"></i> Edit</span>
 
-                                <select class="form-select" id="occupation" disabled>
+                                <span class="cancelBtn badge bg-warning text-dark editBadge ms-1 mb-1 p-1">
+                                    <i class="far fa-times-circle"></i> Cancel</span>
+                            </div>
+
+                            <div class="col-sm-12 mb-2 occupation-selection">
+
+                                <select class="form-select details-input" id="occupation" disabled>
                                     <optgroup label="Accounting / Finance / Admin / HR"></optgroup>
                                     <option>ACCOUNTANT</option>
                                     <option>ADJUSTERS</option>
@@ -226,21 +248,30 @@
 
                             </div>
 
-                            <div class="num-Book col-sm-3">
-                                <a id="edit-Occupation-btn" class="btn btn-dark  float-end disabled"
-                                    aria-disabled="true"> Edit </a>
-                            </div>
+                            <!-- <div class="num-Book col-sm-3">
+                                <a id="edit-Occupation-btn" class="btn btn-dark  float-end "> Edit </a>
+                            </div> -->
 
                         </div>
 
                         <div class="row mb-2">
 
-                            <label for="memorableQuestion" class="col-sm-12 col-form-label">Memorable Question</label>
+                            <label for="memorableQuestion" class="col-sm-9 col-form-label">Memorable
+                                Question</label>
 
-                            <div class="col-sm-9 mb-2">
+                            <div class="col-sm-3 editAndSaveBtn text-end mt-3">
 
-                                <select class="form-select" aria-label="Default select example" id="security-question"
-                                    disabled>
+                                <span class="editBtn badge bg-warning text-dark editBadge ms-1 mb-1 p-1">
+                                    <i class="far fa-edit"></i> Edit</span>
+
+                                <span class="cancelBtn badge bg-warning text-dark editBadge ms-1 mb-1 p-1">
+                                    <i class="far fa-times-circle"></i> Cancel</span>
+                            </div>
+
+                            <div class="col-sm-12 mb-2">
+
+                                <select class="form-select details-input" aria-label="Default select example"
+                                    id="security-question" disabled>
                                     <option>What is my mother's maiden name?</option>
                                     <option>What is my favourite food?</option>
                                     <option>What is my dream car?</option>
@@ -250,12 +281,6 @@
 
                             </div>
 
-                            <div class="num-Book col-sm-3">
-                                <a id="edit-Question-btn" class="btn btn-dark  float-end disabled" aria-disabled="true">
-                                    Edit
-                                </a>
-                            </div>
-
                         </div>
 
                         <div class="row mb-2 memorable-ans-section" hidden>
@@ -263,48 +288,90 @@
                             <label class="col-sm-12 col-form-label">Memorable Answer</label>
 
                             <div class="num-Book col-sm-12">
-                                <input type="text" class="form-control mb-2" placeholder="Memorable Answer" disabled>
-                            </div>
-
-                        </div>
-
-                        <div class="row mb-2 memorable-ans-section">
-
-                            <label class="col-sm-12 col-form-label">Email</label>
-
-                            <div class="num-Book col-sm-12">
-                                <input type="text" class="form-control mb-2" placeholder="Email" disabled>
+                                <input type="text" class="form-control mb-2" placeholder="Memorable Answer"
+                                    id="memorable-answer">
                             </div>
 
                         </div>
 
                         <div class="row mb-2">
 
-                            <label class="col-sm-12 col-form-label">Home Tel Num</label>
+                            <label class="col-sm-9 col-form-label">Email</label>
+
+                            <div class="col-sm-3 editAndSaveBtn text-end mt-3">
+
+                                <span class="editBtn badge bg-warning text-dark editBadge ms-1 mb-1 p-1">
+                                    <i class="far fa-edit"></i> Edit</span>
+
+                                <span class="cancelBtn badge bg-warning text-dark editBadge ms-1 mb-1 p-1">
+                                    <i class="far fa-times-circle"></i> Cancel</span>
+                            </div>
 
                             <div class="num-Book col-sm-12">
-                                <input type="Number" class="form-control mb-2" placeholder="Home Tel Num" disabled>
+                                <input type="text" class="form-control mb-2 details-input" placeholder="Email"
+                                    id="email" disabled>
                             </div>
 
                         </div>
 
                         <div class="row mb-2">
 
-                            <label class="col-sm-12 col-form-label">Office Tel Num</label>
+                            <label class="col-sm-9 col-form-label">Home Tel Num</label>
+
+                            <div class="col-sm-3 editAndSaveBtn text-end mt-3">
+
+                                <span class="editBtn badge bg-warning text-dark editBadge ms-1 mb-1 p-1">
+                                    <i class="far fa-edit"></i> Edit</span>
+
+                                <span class="cancelBtn badge bg-warning text-dark editBadge ms-1 mb-1 p-1">
+                                    <i class="far fa-times-circle"></i> Cancel</span>
+                            </div>
 
                             <div class="num-Book col-sm-12">
-                                <input type="Number" class="form-control mb-2" placeholder="Office Tel Num" disabled>
+                                <input type="Number" class="form-control mb-2 details-input" placeholder="Home Tel Num"
+                                    id="homeTelNum" disabled>
                             </div>
 
                         </div>
 
                         <div class="row mb-2">
 
-                            <label class="col-sm-12 col-form-label">HP Num</label>
+                            <label class="col-sm-9 col-form-label">Office Tel Num</label>
+
+                            <div class="col-sm-3 editAndSaveBtn text-end mt-3">
+
+                                <span class="editBtn badge bg-warning text-dark editBadge ms-1 mb-1 p-1">
+                                    <i class="far fa-edit"></i> Edit</span>
+
+                                <span class="cancelBtn badge bg-warning text-dark editBadge ms-1 mb-1 p-1">
+                                    <i class="far fa-times-circle"></i> Cancel</span>
+                            </div>
 
                             <div class="num-Book col-sm-12">
-                                <input type="Number" class="form-control mb-2" placeholder="HP Num" disabled>
+                                <input type="Number" class="form-control mb-2 details-input"
+                                    placeholder="Office Tel Num" id="officeTelNum" disabled>
                             </div>
+
+                        </div>
+
+                        <div class="row mb-2">
+
+                            <label class="col-sm-9 col-form-label">HP Num</label>
+
+                            <div class="col-sm-3 editAndSaveBtn text-end mt-3">
+
+                                <span class="editBtn badge bg-warning text-dark editBadge ms-1 mb-1 p-1">
+                                    <i class="far fa-edit"></i> Edit</span>
+
+                                <span class="cancelBtn badge bg-warning text-dark editBadge ms-1 mb-1 p-1">
+                                    <i class="far fa-times-circle"></i> Cancel</span>
+                            </div>
+
+                            <div class="num-Book col-sm-12">
+                                <input type="Number" class="form-control mb-2 details-input" placeholder="HP Num"
+                                    id="hpNum" disabled>
+                            </div>
+
 
                         </div>
 
@@ -313,8 +380,8 @@
                                 <a class="btn btn-dark float-start" href="@Url.Action(" ChequeBook", "Home" )">
                                     Back
                                 </a>
-                                <a id="modify-btn" class="btn btn-primary  float-end"> Modify </a>
-                                <a id="next-btn" class="btn btn-primary  float-end"> Next </a>
+                                <a id="next-btn" class="btn btn-primary  float-end disabled" aria-disabled="true"> Next
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -498,32 +565,40 @@
     <script>
         $(document).ready(function () {
             $('#acknowledgement-screen').attr('hidden', true);
-            $('#next-btn').hide();
-            $("#modify-btn").click(function () {
-                $(this).hide();
-                $('#next-btn').show();
-                $("input").prop('disabled', false);
-                $(".occupation-input").prop('disabled', true);
-                $('#edit-Occupation-btn').removeClass('disabled');
-                $('#edit-Question-btn').removeClass('disabled');
-            });
         });
 
-
-        $('#edit-Occupation-btn').on('click', function () {
-            $(".occupation-input").prop('disabled', false);
-            $("#occupation").prop('disabled', false);
+        $('.cancelBtn').hide();
+        $(".editBtn").click(function () {
+            $(this).hide();
+            $(this).siblings('.cancelBtn').show();
+            $(this).parent().siblings(".col-sm-12").children(".details-input").prop('disabled', false);
+            if ($(this).parent().siblings(".col-sm-12").children("#security-question").length) {
+                $(".memorable-ans-section").prop("hidden", false);
+            }
+            checkEditBtn(this);
         });
 
-        $('#edit-Question-btn').on('click', function () {
-            $("#security-question").prop('disabled', false);
-            $(".memorable-ans-section").prop("hidden", false);
+        $(".cancelBtn").click(function () {
+            $(this).hide();
+            $(this).siblings('.editBtn').show();
+            $(this).parent().siblings(".col-sm-12").children(".details-input").prop('disabled', true);
+            if ($(this).parent().siblings(".col-sm-12").children("#security-question").length) {
+                $(".memorable-ans-section").prop("hidden", true);
+            }
+            checkEditBtn(this);
         });
 
-        $("#occupation").change(function () {
-            var select = $("#occupation option:selected").text();
-            $(".occupation-input").val(select);
-        });
+        function checkEditBtn(currentBtn) {
+            if ($(currentBtn).hasClass("editBtn") || $(currentBtn).siblings().hasClass("editBtn")) {
+                if ($(".editBtn").is(":hidden")) {
+                    $('#next-btn').removeClass('disabled');
+                }
+                else {
+                    $("#next-btn").addClass("disabled");
+                }
+            }
+        }
+
 
         $('#next-btn').on('click', function () {
             Swal.fire({
