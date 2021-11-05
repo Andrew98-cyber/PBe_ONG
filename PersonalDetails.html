@@ -30,6 +30,10 @@
             border: 1px solid #D64354 !important;
             cursor: pointer !important;
         }
+
+        .hideArrow {
+            background-image: none;
+        }
     </style>
 
 </head>
@@ -74,7 +78,7 @@
 
                             <div class="col-sm-12 mb-2 occupation-selection">
 
-                                <select class="form-select details-input" id="occupation" disabled>
+                                <select class="form-select details-input hideArrow" id="occupation" disabled>
                                     <optgroup label="Accounting / Finance / Admin / HR"></optgroup>
                                     <option>ACCOUNTANT</option>
                                     <option>ADJUSTERS</option>
@@ -248,6 +252,7 @@
                                 </select>
 
                             </div>
+
 
                         </div>
 
@@ -745,6 +750,7 @@
     </div>
     <!-- @Scripts.Render("~/bundles/jquery") -->
     <script>
+
         $(document).ready(function () {
             $('#acknowledgement-screen').attr('hidden', true);
         });
@@ -757,6 +763,9 @@
             if ($(this).parent().siblings(".col-sm-12").children("#security-question").length) {
                 $(".memorable-ans-section").prop("hidden", false);
             }
+            if ($(this).parent().siblings(".col-sm-12").children("#occupation").length) {
+                $(".occupation-selection #occupation").removeClass("hideArrow");
+            }
             checkEditBtn(this);
         });
 
@@ -766,6 +775,9 @@
             $(this).parent().siblings(".col-sm-12").children(".details-input").prop('disabled', true);
             if ($(this).parent().siblings(".col-sm-12").children("#security-question").length) {
                 $(".memorable-ans-section").prop("hidden", true);
+            }
+            if ($(this).parent().siblings(".col-sm-12").children("#occupation").length) {
+                $(".occupation-selection #occupation").addClass("hideArrow");
             }
             checkEditBtn(this);
         });
