@@ -1,0 +1,1219 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Style-Puvan -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <!-- Fonts -->
+    <link href="http://fonts.cdnfonts.com/css/gilroy-bold" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;500;700&display=swap" rel="stylesheet" />
+
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+
+    <!-- MultiSelect -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
+
+    <!-- FlatPickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <title>Update Contact Information</title>
+
+    <style>
+        .firstDetail {
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .secondDetail a {
+            color: rgb(59, 59, 161);
+            font-weight: 700;
+        }
+
+        .editBtn {
+            background-color: transparent !important;
+            color: #212529 !important;
+            border: 1px solid #212529 !important;
+            cursor: pointer !important;
+        }
+
+        .cancelBtn {
+            background-color: transparent !important;
+            color: #D64354 !important;
+            border: 1px solid #D64354 !important;
+            cursor: pointer !important;
+        }
+
+        .choices__input {
+            font-size: 1rem;
+            margin-bottom: 0px;
+        }
+
+        .choices__inner {
+            border-radius: 0.3rem;
+            border-color: black;
+            padding: 5px 10px;
+        }
+
+        .choices__item {
+            color: black;
+            font-size: 16px !important;
+            font-weight: 700;
+        }
+
+        /* success */
+        .checkmark__circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 2;
+            stroke-miterlimit: 10;
+            stroke: #7ac142;
+            fill: none;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
+        }
+
+        .checkmark {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 2;
+            stroke: #fff;
+            stroke-miterlimit: 10;
+            margin: 10% auto;
+            box-shadow: inset 0px 0px 0px #7ac142;
+            animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
+        }
+
+        .checkmark__check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
+        }
+
+        @keyframes stroke {
+            100% {
+                stroke-dashoffset: 0
+            }
+        }
+
+        @keyframes scale {
+
+            0%,
+            100% {
+                transform: none
+            }
+
+            50% {
+                transform: scale3d(1.1, 1.1, 1)
+            }
+        }
+
+        @keyframes fill {
+            100% {
+                box-shadow: inset 0px 0px 0px 30px #7ac142
+            }
+        }
+
+        /* failed */
+        .failedmark {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 2;
+            stroke: #fff;
+            stroke-miterlimit: 10;
+            box-shadow: inset 0px 0px 0px #ff0000;
+            animation: fill2 .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
+        }
+
+        .failedmark_circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 2;
+            stroke-miterlimit: 10;
+            stroke: #ff0000;
+            fill: none;
+            animation: stroke2 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
+        }
+
+        .failedmark_check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke2 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
+        }
+
+        @keyframes stroke2 {
+            100% {
+                stroke-dashoffset: 0
+            }
+        }
+
+        @keyframes scale {
+
+            0%,
+            100% {
+                transform: none
+            }
+
+            50% {
+                transform: scale3d(1.1, 1.1, 1)
+            }
+        }
+
+        @keyframes fill2 {
+            100% {
+                box-shadow: inset 0px 0px 0px 30px #ff0000
+            }
+        }
+
+        /* 11-11-2021 */
+
+        @media (max-width: 576px) {
+
+            #tokenText,
+            #notiText {
+                font-size: 14px;
+            }
+
+            #reqPacBtn {
+                width: 100%;
+            }
+
+            .checkTextDIV h5 {
+                font-size: 16px;
+                margin-left: 20px;
+            }
+
+            .checkTextDIV p {
+                font-size: 13px;
+                margin-left: 20px;
+            }
+        }
+
+        @media (min-width: 576px) {
+
+            #tokenText,
+            #notiText,
+            #secureText,
+            #pacText {
+                font-size: 16px;
+            }
+
+            #reqPacBtn {
+                width: 100%;
+            }
+
+            .checkTextDIV {
+                margin-top: 10px;
+            }
+
+            .checkTextDIV h5 {
+                font-size: 18px;
+            }
+
+            .checkTextDIV p {
+                font-size: 14px;
+            }
+        }
+
+        @media (min-width: 768px) {
+
+            #tokenText,
+            #notiText,
+            #secureText,
+            #pacText {
+                font-size: 16px;
+            }
+
+            .checkTextDIV h5 {
+                font-size: 20px;
+            }
+
+            .checkTextDIV p {
+                font-size: 15px;
+            }
+
+
+        }
+
+        @media (min-width: 992px) {
+
+            #notiText {
+                margin-top: 6px;
+            }
+
+            .checkTextDIV h5 {
+                font-size: 20px;
+            }
+
+            .checkTextDIV p {
+                font-size: 15px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+
+            .checkTextDIV h5 {
+                font-size: 22px;
+            }
+
+            .checkTextDIV p {
+                font-size: 16px;
+            }
+        }
+
+        @media (min-width: 1400px) {
+
+            #tokenText,
+            #notiText,
+            #secureText,
+            #pacText {
+                font-size: 18px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .pictureRow {
+                position: fixed;
+                top: 100;
+                right: 100;
+            }
+
+            .formRow {
+                position: relative;
+                top: 0;
+                right: 200px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="d-none d-lg-block" style="height:5vh;"></div>
+
+    <div class="container gx-1 gx-lg-0 mt-3 mt-lg-5 my-auto">
+        <div class="row mt-2 justify-content-center">
+            <div class="col-lg-8 formRow">
+                <div class="row justify-content-center ">
+
+                    <div class="col-12 col-lg-5 col-xl-6 p-5 text-center position-relative">
+                        <img src="~/Images/WebDecoratives/contact (1).png" class="img-fluid position-absolute"
+                            style="width: 150px;left: 34%;top: 45px;" />
+                        <img src="~/Images/WebDecoratives/Work risk-free.svg" class="mb-4 img-fluid "
+                            style="width:300px" />
+                        <h3>Update Contact Information</h3>
+                        <p class="mb-4">
+                            Update your contact information for all of your cards.
+                        </p>
+                    </div>
+
+                    <div id="firstPage" class="col-12 col-lg-8 px-lg-0 px-4">
+
+                        <div class="row mb-2 d-flex justify-content-center">
+                            <label class="col-sm-12 col-form-label">Primary Card / Supplementary Card</label>
+                            <div class="col-sm-12 my-1">
+                                <div class="radio">
+                                    <input id="radio-3" name="radio3" class="custom-control-input" type="radio" checked>
+                                    <label for="radio-3" class="radio-label3">Primary</label>
+                                </div>
+
+                                <div class="radio">
+                                    <input id="radio-4" name="radio3" type="radio">
+                                    <label for="radio-4" class="radio-label4">Supplementary</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 d-flex justify-content-center">
+
+                            <div class="col-sm-12 d-flex flex-wrap flex-row justify-content-between">
+                                <label class="col-sm-6 col-form-label">For account</label>
+
+                                <div
+                                    class="form-check form-switch d-flex justify-content-end d-xxl-none col-sm-6 text-end p-0 py-2 pe-2">
+                                    <input class="form-check-input ms-5 p-0" type="checkbox" role="switch"
+                                        id="selectAllSwitch">
+                                    <label class="form-check-label ps-3" for="selectAllSwitch">Select all
+                                        accounts</label>
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-xxl-8">
+
+                                <select id="choices-multiple-remove-button" multiple>
+                                    <option class="choice-option">40001518</option>
+                                    <option class="choice-option">95774453</option>
+                                    <option class="choice-option">12354898</option>
+                                    <option class="choice-option">12354891</option>
+                                    <option class="choice-option">14680642</option>
+                                    <option class="choice-option">54670423</option>
+                                    <option class="choice-option">40054898</option>
+                                    <option class="choice-option">95771468</option>
+                                </select>
+
+                            </div>
+
+                            <div class="form-check form-switch d-none d-xxl-block col-sm-4 text-end p-0 py-2 pe-2">
+                                <input class="form-check-input ms-5 p-0" type="checkbox" role="switch"
+                                    id="selectAllSwitch">
+                                <label class="form-check-label ps-3" for="selectAllSwitch">Select all accounts</label>
+                            </div>
+
+                        </div>
+
+                        <div class="row my-5 last-row">
+                            <div class="col-12">
+                                <a class="btn btn-dark float-start" href="@Url.Action(" CardSettings", "Home" )">
+                                    Back
+                                </a>
+                                <a id="firstNext" class="btn btn-primary  float-end"> Next </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div hidden id="secondPage" class="col-12 col-lg-8 px-4">
+                        <form>
+                            <div class="row mb-2">
+                                <label class="col-9 col-form-label">
+                                    Mailing Address (ONLY Malaysia Address is
+                                    allowed)
+                                </label>
+
+                                <div class="col-3 editAndSaveBtn text-end mt-2">
+
+                                    <span class="editBtn secondPageBtns badge text-dark editBadge ms-1 mb-1 p-1">
+                                        <i class="far fa-edit"></i> Edit
+                                    </span>
+
+                                    <span class="cancelBtn badge text-dark editBadge ms-1 mb-1 p-1">
+                                        <i class="far fa-times-circle"></i> Cancel
+                                    </span>
+
+                                </div>
+
+                                <div class="col-sm-12 my-1 d-none" id="mailingField">
+                                    <input type="text" id="mailing" class="form-control" name="mailing"
+                                        placeholder="Enter House No./ Unit No./ Apt/ Suite/ Building">
+                                    <input type="text" id="mailing" class="form-control" name="mailing"
+                                        placeholder="Enter Street Address/ P.O Box">
+                                    <input type="text" id="mailing" class="form-control mb-2" name="mailing"
+                                        placeholder="Enter City And State">
+
+                                    <div class="row mb-2">
+                                        <label class="col-9 col-form-label">Postcode</label>
+
+                                        <div class="col-3 editAndSaveBtn text-end mt-2">
+
+                                            <span
+                                                class="editBtn secondPageBtns2 badge text-dark editBadge ms-1 mb-1 p-1">
+                                                <i class="far fa-edit"></i> Edit
+                                            </span>
+
+                                            <span class="cancelBtn badge text-dark editBadge ms-1 mb-1 p-1">
+                                                <i class="far fa-times-circle"></i> Cancel
+                                            </span>
+
+                                        </div>
+
+                                        <div class="col-sm-12 my-1 d-none" id="postcodeField">
+                                            <input type="text" id="postcode" class="form-control" name="postcode"
+                                                placeholder="Postcode">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-9 col-form-label">State</label>
+
+                                        <div class="col-3 editAndSaveBtn text-end mt-2">
+
+                                            <span
+                                                class="editBtn secondPageBtns2 badge text-dark editBadge ms-1 mb-1 p-1">
+                                                <i class="far fa-edit"></i> Edit
+                                            </span>
+
+                                            <span class="cancelBtn badge text-dark editBadge ms-1 mb-1 p-1">
+                                                <i class="far fa-times-circle"></i> Cancel
+                                            </span>
+                                        </div>
+
+                                        <div class="col-sm-12 my-1 d-none" id="stateField">
+                                            <select class="form-select" aria-label="Default select example">
+
+                                                <option selected>Select State</option>
+                                                <option value="">Johor</option>
+                                                <option value="">Negeri Sembilan</option>
+                                                <option value="">Selangor</option>
+                                                <option value="">Malacca</option>
+                                                <option value="">Perak</option>
+                                                <option value="">Penang</option>
+                                                <option value="">Terengganu</option>
+                                                <option value="">Sabah</option>
+                                                <option value="">Sarawak</option>
+                                                <option value="">Kelantan</option>
+                                                <option value="">Pahang</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <label class="col-9 col-form-label">Email Address</label>
+
+                                <div class="col-3 editAndSaveBtn text-end mt-2">
+
+                                    <span class="editBtn secondPageBtns badge text-dark editBadge ms-1 mb-1 p-1">
+                                        <i class="far fa-edit"></i> Edit
+                                    </span>
+
+                                    <span class="cancelBtn badge text-dark editBadge ms-1 mb-1 p-1">
+                                        <i class="far fa-times-circle"></i> Cancel
+                                    </span>
+
+                                </div>
+
+                                <div class="col-sm-12 my-1 d-none" id="emailField">
+                                    <input type="text" id="email" class="form-control" name="email"
+                                        placeholder="Enter Email Address">
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <label class="col-9 col-form-label">Mobile Phone Number</label>
+
+                                <div class="col-3 editAndSaveBtn text-end mt-2">
+
+                                    <span class="editBtn secondPageBtns badge text-dark editBadge ms-1 mb-1 p-1">
+                                        <i class="far fa-edit"></i> Edit
+                                    </span>
+
+                                    <span class="cancelBtn badge text-dark editBadge ms-1 mb-1 p-1">
+                                        <i class="far fa-times-circle"></i> Cancel
+                                    </span>
+
+                                </div>
+
+                                <div class="col-sm-12 my-1 d-flex flex-wrap d-none" id="mobileField">
+                                    <div class="col-lg-3 col-md-12 col-sm-12 col-12 rightReference1 my-1">
+                                        <input type="text" id="mobile1" class="form-control" name="mobile"
+                                            placeholder="+6">
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-12 col-sm-12 col-12 rightReference1 my-1">
+                                        <input type="text" id="mobile2" class="form-control" name="mobile"
+                                            placeholder="0123456789">
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 rightReference1 my-1">
+                                        <label for="mobile" id="mobile3">
+                                            *Country Code is ONLY applicable for
+                                            overseas mobile phone number.
+                                        </label>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="row mb-2">
+                                <label class="col-9 col-form-label">
+                                    Home Phone Number
+                                </label>
+
+                                <div class="col-3 editAndSaveBtn text-end mt-2">
+
+                                    <span class="editBtn secondPageBtns badge text-dark editBadge ms-1 mb-1 p-1">
+                                        <i class="far fa-edit"></i> Edit
+                                    </span>
+
+                                    <span class="cancelBtn badge text-dark editBadge ms-1 mb-1 p-1">
+                                        <i class="far fa-times-circle"></i> Cancel
+                                    </span>
+
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 my-1 d-none" id="homeField">
+                                    <input type="text" class="form-control" id="home" name="home"
+                                        placeholder="Enter Home Number">
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <label class="col-9 col-form-label">
+                                    Office Phone Number
+                                </label>
+
+                                <div class="col-3 editAndSaveBtn text-end mt-2">
+
+                                    <span class="editBtn secondPageBtns badge text-dark editBadge ms-1 mb-1 p-1">
+                                        <i class="far fa-edit"></i> Edit
+                                    </span>
+
+                                    <span class="cancelBtn badge text-dark editBadge ms-1 mb-1 p-1">
+                                        <i class="far fa-times-circle"></i> Cancel
+                                    </span>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 my-1 d-none" id="officeField">
+                                    <input type="text" id="office" class="form-control" name="office"
+                                        placeholder="Enter Office Number">
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <label class="col-9 col-lg-9 col-md-9 col-sm-9 col-form-label">
+                                    Delivery Option For
+                                    Renewal /
+                                    Replacement Card
+                                </label>
+
+                                <div class="col-3 editAndSaveBtn text-end mt-2">
+
+                                    <span class="editBtn secondPageBtns badge text-dark editBadge ms-1 mb-1 p-1">
+                                        <i class="far fa-edit"></i> Edit
+                                    </span>
+
+                                    <span class="cancelBtn badge text-dark editBadge ms-1 mb-1 p-1">
+                                        <i class="far fa-times-circle"></i> Cancel
+                                    </span>
+
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 my-1 d-none" id="deliveryOptField">
+                                    <div class="radio">
+                                        <input id="radio-1" name="radio1" type="radio" checked>
+                                        <label for="radio-1" class="radio-label1">
+                                            Courier to my mailing
+                                            address
+                                        </label>
+                                    </div>
+
+                                    <div class="radio">
+                                        <input id="radio-2" name="radio1" type="radio">
+                                        <label for="radio-2" class="radio-label2">
+                                            Collect at Public Bank
+                                            Branch
+                                        </label>
+                                    </div>
+
+                                    <select class="form-select branch-select mt-1" aria-label="Default select example"
+                                        id="selectBranch">
+
+                                        <option selected>Select Branch</option>
+
+                                        <!-- <option value="" id="boldState" disabled>Johor</option> -->
+                                        <optgroup label="Johor"></optgroup>
+                                        <option value="">Tangkak</option>
+                                        <option value="">Muar</option>
+
+                                        <!-- <option value="" id="boldState" disabled>Negeri Sembilan</option> -->
+                                        <optgroup label="Negeri Sembilan"></optgroup>
+                                        <option value="">Seremban</option>
+
+                                        <!-- <option value="" id="boldState" disabled>Selangor</option> -->
+                                        <optgroup label="Selangor"></optgroup>
+                                        <option value="">Bangi</option>
+
+                                        <!-- <option value="" id="boldState" disabled>Kedah</option> -->
+                                        <optgroup label="Kedah"></optgroup>
+                                        <option value="">Alor Setar</option>
+                                        <option value="">Kuala Ketil</option>
+
+                                    </select>
+                                </div>
+
+
+
+
+                            </div>
+
+                            <div class="row mb-2 justify-content-between">
+
+                                <label for="tranAmount" class="col-sm-12 col-form-label">OTP</label>
+
+                                <div class="col-7 col-sm-8 col-md-9 col-lg-8 col-xl-9">
+                                    <input type="text" class="form-control" id="PAC">
+                                </div>
+
+                                <div
+                                    class="col-5 col-sm-4 col-md-3 col-lg-4 col-xl-3 ps-0 text-end text-lg-center mt-0">
+                                    <a class="btn btn-info pac text-white float-lg-end">Request OTP</a>
+                                </div>
+
+                                <div class="description mt-1">
+                                    <span>Didn't get the code</span>
+                                    <a hidden href="#" id="ResendPAC"
+                                        class="text-decoration-none ms-3 mb-2">Resend(1/3)</a>
+                                    <p class="text-muted">A 6 digit OTP will be sent to your registered mobile phone
+                                        number
+                                        *****6168. Please click "Request PAC" if you wish to proceed</p>
+                                </div>
+
+                                <div class="mt-0">
+
+
+                                </div>
+                            </div>
+
+                            <div class="row my-5 last-row">
+                                <div class="col-12">
+                                    <a class="btn btn-dark col-5 col-sm-3 me-sm-2 col-lg-5 col-xxl-3"
+                                        href="@Url.Action(" CardSettings", "Home" )">
+                                        Back
+                                    </a>
+                                    <a
+                                        class="btn btn-outline-primary btnReset col-5 float-end col-sm-3 float-sm-none col-lg-5 float-lg-end float-xxl-none col-xxl-3">
+                                        Clear </a>
+                                    <a id="secondNext"
+                                        class="btn btn-primary col-12 col-sm-3 mt-2 mt-sm-0 float-sm-end col-lg-12 mt-lg-2 col-xxl-3 mt-xxl-0 disabled">
+                                        Submit </a>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div hidden id="thirdPage" class="col-12 col-lg-8 px-4">
+                        <form>
+                            <div class="row mb-2">
+                                <label class="col-9 col-form-label">Email Address</label>
+
+                                <div class="col-3 editAndSaveBtn text-end mt-2">
+
+                                    <span class="editBtn thirdPageBtns badge text-dark editBadge ms-1 mb-1 p-1">
+                                        <i class="far fa-edit"></i> Edit
+                                    </span>
+
+                                    <span class="cancelBtn badge text-dark editBadge ms-1 mb-1 p-1">
+                                        <i class="far fa-times-circle"></i> Cancel
+                                    </span>
+                                </div>
+
+                                <div class="col-sm-12 my-1 d-none" id="emailField">
+                                    <input type="text" id="email" class="form-control" name="email"
+                                        placeholder="Enter Email Address">
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <label class="col-9 col-form-label">Mobile Phone Number</label>
+
+                                <div class="col-3 editAndSaveBtn text-end mt-2">
+
+                                    <span class="editBtn thirdPageBtns badge text-dark editBadge ms-1 mb-1 p-1">
+                                        <i class="far fa-edit"></i> Edit
+                                    </span>
+
+                                    <span class="cancelBtn badge text-dark editBadge ms-1 mb-1 p-1">
+                                        <i class="far fa-times-circle"></i> Cancel
+                                    </span>
+                                </div>
+
+                                <div class="col-sm-12 my-1 d-flex flex-wrap d-none" id="mobileField">
+                                    <div class="col-lg-3 col-md-12 col-sm-12 col-12 rightReference1 my-1">
+                                        <input type="text" id="mobile1" class="form-control" name="mobile"
+                                            placeholder="+6">
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-12 col-sm-12 col-12 rightReference1 my-1">
+                                        <input type="text" id="mobile2" class="form-control" name="mobile"
+                                            placeholder="0123456789">
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 rightReference1 my-1">
+                                        <label for="mobile" id="mobile3">
+                                            *Country Code is ONLY applicable for
+                                            overseas mobile phone number.
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-2">
+                                <label class="col-9 col-lg-9 col-md-9 col-sm-9 col-form-label">
+                                    Delivery Option For
+                                    Renewal /
+                                    Replacement Card
+                                </label>
+
+                                <div class="col-3 editAndSaveBtn text-end mt-2">
+
+                                    <span class="editBtn thirdPageBtns badge text-dark editBadge ms-1 mb-1 p-1">
+                                        <i class="far fa-edit"></i> Edit
+                                    </span>
+
+                                    <span class="cancelBtn badge text-dark editBadge ms-1 mb-1 p-1">
+                                        <i class="far fa-times-circle"></i> Cancel
+                                    </span>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 my-1 d-none" id="deliveryOptField">
+                                    <div class="radio">
+                                        <input id="radio-1" name="radio" type="radio" checked>
+                                        <label for="radio-1" class="radio-label1">
+                                            Courier to my mailing
+                                            address
+                                        </label>
+                                    </div>
+
+                                    <div class="radio">
+                                        <input id="radio-2" name="radio" type="radio">
+                                        <label for="radio-2" class="radio-label2">
+                                            Collect at Public Bank
+                                            Branch
+                                        </label>
+                                    </div>
+
+                                    <select class="form-select branch-select mt-1" aria-label="Default select example"
+                                        id="selectBranch">
+
+                                        <option selected>Select Branch</option>
+
+                                        <optgroup label="Johor"></optgroup>
+                                        <option value="">Tangkak</option>
+                                        <option value="">Muar</option>
+
+                                        <optgroup label="Negeri Sembilan"></optgroup>
+                                        <option value="">Seremban</option>
+
+                                        <optgroup label="Selangor"></optgroup>
+                                        <option value="">Bangi</option>
+
+                                        <optgroup label="Kedah"></optgroup>
+                                        <option value="">Alor Setar</option>
+                                        <option value="">Kuala Ketil</option>
+
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-2 justify-content-between">
+
+                                <label for="tranAmount" class="col-sm-12 col-form-label">OTP</label>
+
+                                <div class="col-7 col-sm-8 col-md-9 col-lg-8 col-xl-9">
+                                    <input type="text" class="form-control" id="PAC">
+                                </div>
+
+                                <div
+                                    class="col-5 col-sm-4 col-md-3 col-lg-4 col-xl-3 ps-0 text-end text-lg-center mt-0">
+                                    <a class="btn btn-info pac text-white float-lg-end">Request OTP</a>
+                                </div>
+
+                                <div class="description mt-1">
+                                    <span>Didn't get the code</span>
+                                    <a hidden href="#" id="ResendPAC"
+                                        class="text-decoration-none ms-3 mb-2">Resend(1/3)</a>
+                                    <p class="text-muted">A 6 digit OTP will be sent to your registered mobile phone
+                                        number
+                                        *****6168. Please click "Request PAC" if you wish to proceed</p>
+                                </div>
+
+                                <div class="mt-0">
+
+
+                                </div>
+                            </div>
+
+                            <div class="row my-5 last-row">
+                                <div class="col-12">
+                                    <a class="btn btn-dark col-5 col-sm-3 me-sm-2 col-lg-5 col-xxl-3"
+                                        href="@Url.Action(" CardSettings", "Home" )">
+                                        Back
+                                    </a>
+                                    <a
+                                        class="btn btn-outline-primary btnReset col-5 float-end col-sm-3 float-sm-none col-lg-5 float-lg-end float-xxl-none col-xxl-3">
+                                        Clear </a>
+                                    <a id="thirdNext"
+                                        class="btn btn-primary col-12 col-sm-3 mt-2 mt-sm-0 float-sm-end col-lg-12 mt-lg-2 col-xxl-3 mt-xxl-0 disabled">
+                                        Submit </a>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Success -->
+                    <div hidden id="successFourth" class="col-12 col-lg-8 mt-3 px-4 fourthPage">
+
+                        <div class="p-4 shadow bg-white rounded-8">
+
+                            <div class="row logoRow mb-4">
+
+                                <div class="col-2 checkIconDIV">
+
+                                    <div class="successIcon text-start">
+                                        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                                            <path class="checkmark__check" fill="none"
+                                                d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                                        </svg>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-10 checkTextDIV">
+                                    <h5>Contact Details Update Successfully</h5>
+                                    <p class="text-muted">4 May 2018, 12:59:12pm</p>
+                                </div>
+
+                            </div>
+
+                            <div class="row detailsRow">
+
+                                <div class="row firstDetail text-start">
+                                    <label>Thank you! Your Contact detail(s) is/are updated now.</label>
+                                </div>
+
+                                <div class="row secondDetail text-start mt-2">
+                                    <label>
+                                        For banking accounts contact details, please update information at
+                                        <a href="#"> Change Mailing Address</a> or <a href="#">Change Personal
+                                            Details.</a>
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row my-5 last-row">
+                            <div class="col-12">
+                                <a class="btn btn-dark float-start"> Print </a>
+                                <a id="thirdNext" class="btn btn-primary  float-end" href="@Url.Action("
+                                    CardSettings", "Home" )"> Done </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Failed -->
+                    <div hidden id="failFourth" class="col-12 col-lg-8 mt-3 px-4 fourthPage">
+
+                        <div class="p-4 shadow bg-white rounded-8">
+
+                            <div class="row logoRow mb-4">
+
+                                <div class="col-2 checkIconDIV">
+
+                                    <div class="failedIcon text-start">
+                                        <svg class="failedmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                            <circle class="failedmark_circle" cx="46" cy="46" r="25" fill="none" />
+                                            <path class="failedmark_check" fill="none"
+                                                d="M14.1 14.1l23.8 23.8 m0,-23.8 l-23.8,23.8" />
+                                        </svg>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-10 checkTextDIV">
+                                    <h5>Contact Details Update Failed</h5>
+                                    <p class="text-muted">4 May 2018, 12:59:12pm</p>
+                                </div>
+
+                            </div>
+
+                            <div class="row detailsRow">
+
+                                <div class="row firstDetail text-start">
+                                    <label>Sorry! Your Contact detail(s) is/are updated failed.</label>
+                                </div>
+
+                                <div class="row secondDetail text-start mt-2">
+                                    <label>
+                                        For banking accounts contact details, please update information at
+                                        <a href="#"> Change Mailing Address</a> or <a href="#">Change Personal
+                                            Details.</a>
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row my-5 last-row">
+                            <div class="col-12">
+                                <a class="btn btn-dark float-start"> Print </a>
+                                <a id="thirdNext" class="btn btn-primary  float-end" href="@Url.Action("
+                                    CardSettings", "Home" )"> Done </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="alert alert-info col-10 col-sm-11 col-xxl-18 col-lg-8 rounded-8 shadow-sm my-5 px-3"
+                        role="alert">
+                        <b>Note</b><br>
+                        <ul>
+                            <li>Important: Only one handphone number for all principal card.</li>
+                            <li>
+                                Please be informed that updates can only be effected for address in Malaysia for
+                                principal card.
+                            </li>
+                            <li>
+                                For request to update to overseas address, kindly email to
+                                custsvc@publicbank.com.my or make changes at branches.
+                            </li>
+                            <li>
+                                Any changes to your mailing or email address will only be effective in your next
+                                statement.
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 last-row p-4 mt-4 p-sm-2 text-center pictureRow">
+                <img src="~/Images/WebsiteImages/register-win-pbe-login02.jpg" class="img-fluid " />
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- J-Query -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- FlatPickr -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- MultiSelect Choices JS-->
+    <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+
+    <script>
+        var isSuccess = true;
+        $(document).ready(function () {
+
+            $('.mobileNav').each(function () {
+                $(this).removeClass('active');
+            });
+
+            $('.nav-link').each(function () {
+                $(this).removeClass('active');
+            });
+
+            $('.profile').each(function () {
+                $(this).addClass('active');
+            });
+
+            $('.profileMenu').addClass('active');
+
+            var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+                removeItemButton: true,
+                searchEnabled: true,
+                searchChoices: true,
+                searchResultLimit: 5,
+                placeholder: true,
+                selectAll: true,
+                placeholderValue: "Search or select account(s)",
+                // searchPlaceholderValue: null,
+                // renderChoiceLimit: 5,
+            });
+        });
+
+        $("#selectAllSwitch").change(function () {
+            if ($(this).is(":checked")) {
+                $(".choices").addClass('is-disabled');
+                $('.choices__list').attr('hidden', true);
+                $('.choices__input').attr('disabled', true);
+            } else {
+                $(".choices").removeClass('is-disabled');
+                $('.choices__list').attr('hidden', false);
+                $('.choices__input').attr('disabled', false);
+            }
+        });
+
+        $('#firstNext').on('click', function () {
+
+            if ($('#radio-3').is(':checked')) {
+                $('#secondPage').attr('hidden', false);
+                $('#thirdPage').attr('hidden', true);
+                isSuccess = true;
+            }
+
+            else {
+                $('#secondPage').attr('hidden', true);
+                $('#thirdPage').attr('hidden', false);
+                isSuccess = false;
+
+            }
+
+            $('#firstPage').attr('hidden', true);
+            $('#fourthPage').attr('hidden', true);
+            //$('#secondNext').removeClass('disabled');
+        });
+
+        // Success
+
+        $('#secondNext').on('click', function () {
+            if (isSuccess == true) {
+                Swal.fire({
+                    title: 'Your Information Successfully Saved',
+                    icon: 'success',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#successFourth').attr('hidden', false);
+                        $('#thirdPage').attr('hidden', true);
+                        $('#secondPage').attr('hidden', true);
+                        $('#firstPage').attr('hidden', true);
+                    }
+                })
+            }
+            else {
+                Swal.fire({
+                    title: 'Your Information Failed To Be Saved',
+                    icon: 'error',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#failFourth').attr('hidden', false);
+                        $('#thirdPage').attr('hidden', true);
+                        $('#secondPage').attr('hidden', true);
+                        $('#firstPage').attr('hidden', true);
+                    }
+                })
+            }
+
+        });
+
+        $('#thirdNext').on('click', function () {
+            if (isSuccess == true) {
+                Swal.fire({
+                    title: 'Your Information Successfully Saved',
+                    icon: 'success',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#successFourth').attr('hidden', false);
+                        $('#thirdPage').attr('hidden', true);
+                        $('#secondPage').attr('hidden', true);
+                        $('#firstPage').attr('hidden', true);
+                    }
+                })
+            }
+            else {
+                Swal.fire({
+                    title: 'Your Information Failed To Be Saved',
+                    icon: 'error',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#failFourth').attr('hidden', false);
+                        $('#thirdPage').attr('hidden', true);
+                        $('#secondPage').attr('hidden', true);
+                        $('#firstPage').attr('hidden', true);
+                    }
+                })
+            }
+
+        });
+
+        // Failed
+
+        $('#secondNext').on('click', function () {
+
+        });
+
+        $('#thirdNext').on('click', function () {
+
+        });
+
+        $('.pac').on('click', function () {
+            Swal.fire(
+                'OTP is Sent!',
+                'OTP sent to your phone number 012 - * * * * 123',
+                'success'
+            )
+        });
+
+        // Edit And Cancel Btn
+        $('.cancelBtn').hide();
+        $(".editBtn").click(function () {
+            $(this).hide();
+            $(this).siblings('.cancelBtn').show();
+            $(this).parent().siblings(".col-sm-12").removeClass("d-none");
+            checkEditBtn(this);
+        });
+
+        $(".cancelBtn").click(function () {
+            $(this).hide();
+            $(this).siblings('.editBtn').show();
+            $(this).parent().siblings(".col-sm-12").addClass("d-none");
+            checkEditBtn(this);
+        });
+
+        function checkEditBtn(currentBtn) {
+
+            if ($(currentBtn).hasClass("secondPageBtns") || $(currentBtn).siblings().hasClass("secondPageBtns")) {
+                if ($(".secondPageBtns").is(":hidden")) {
+                    $("#secondNext").removeClass("disabled");
+                    $("#secondPAC").attr("disabled", false);
+                    $("#secondRequestBtn").attr("disabled", false);
+                }
+                else {
+                    $("#secondNext").addClass("disabled");
+                    $("#secondPAC").attr("disabled", true);
+                    $("#secondRequestBtn").attr("disabled", true);
+                }
+            }
+            else {
+
+                if ($(".thirdPageBtns").is(":hidden")) {
+                    $("#thirdNext").removeClass("disabled");
+                    $("#thirdPAC").attr("disabled", false);
+                    $("#thirdRequestBtn").attr("disabled", false);
+                }
+                else {
+                    $("#thirdNext").addClass("disabled");
+                    $("#thirdPAC").attr("disabled", true);
+                    $("#thirdRequestBtn").attr("disabled", true);
+                }
+            }
+        }
+
+        //reset button
+        $('.btnReset').on('click', function () {
+            $('form')[0].reset();
+            $('.cancelBtn').hide();
+            $('.cancelBtn').siblings('.editBtn').show();
+            $('.cancelBtn').parent().siblings(".col-sm-12").addClass("d-none");
+            if ($('form').has("#secondNext")) {
+                $("#secondNext").addClass('disabled');
+            }
+            else if ($('form').has("#thirdNext")) {
+                $("#thirdNext").addClass('disabled');
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>
