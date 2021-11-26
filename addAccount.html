@@ -405,6 +405,7 @@
                                 </div>
                             </div>
 
+
                             <div class="row my-5 last-row">
                                 <div class="col-12">
                                     <a class="btn btn-dark col-5 col-sm-3 me-sm-2 col-lg-5 col-xxl-3"
@@ -521,7 +522,9 @@
 
     <script>
         $(document).ready(function () {
+            //added new variable
             var selectedAccType;
+
             $('.mobileNav').each(function () {
                 $(this).removeClass('active');
             })
@@ -543,7 +546,10 @@
                     $('#firstPage').attr('hidden', true);
                     $('#thirdPage').attr('hidden', true);
                 }
+                //added dynamic account type input
                 $("#accTypeInput").val(selectedAccType);
+
+                //additional input will appear for some account type
                 if (selectedAccType == "Credit / Debit Card") {
                     $(".cvvNo").prop("hidden", false);
                 }
