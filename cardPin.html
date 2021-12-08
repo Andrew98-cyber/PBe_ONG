@@ -475,8 +475,8 @@
     @Scripts.Render("~/bundles/js")
     <script>
         $(document).ready(function () {
-            var oneMin = 60,
-                display = $('#time');
+            var display = $('#time'),
+                oneMin = 60;
 
             $('.mobileNav').each(function () {
                 $(this).removeClass('active');
@@ -550,7 +550,8 @@
 
             function startTimer(duration, display) {
                 var timer = duration, minutes, seconds;
-                setInterval(function () {
+
+                var timerInterval = setInterval(function () {
                     minutes = parseInt(timer / 60, 10);
                     seconds = parseInt(timer % 60, 10);
 
@@ -560,9 +561,11 @@
                     display.text(minutes + " : " + seconds);
 
                     if (--timer < 0) {
+                        clearInterval(timerInterval);
                         timer = duration;
                         $('.pac').removeClass('disabled');
                         $('.timerText').prop("hidden", true);
+                        return;
                     }
                 }, 1000);
             }
