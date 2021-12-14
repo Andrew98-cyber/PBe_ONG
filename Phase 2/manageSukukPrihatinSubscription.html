@@ -522,7 +522,7 @@
 
                                 <div class="col-sm-12 authField" hidden>
 
-                                    <div class="row justify-content-between  myFA2" id="PAC" mt-2>
+                                    <div class="row justify-content-between  myFA2" id="pac" mt-2>
 
                                         <div class="zz col-3 col-lg-2 col-xxl-3">
                                             <label for="PAC" class="col-sm-3 col-form-label">
@@ -530,51 +530,52 @@
                                             </label>
                                         </div>
 
-                                        <div class="col-8 col-md-9 row d-block d-md-none d-lg-block d-xl-none"
-                                            id="pacTextandBtn">
+                                        <div class="col-8 col-md-9 row d-block d-md-none" id="pacTextandBtn">
 
-                                            <div class="digitPac col-12 col-md-6 col-lg-12 col-xl-6">
+                                            <div class="digitPac col-12 col-md-6 col-lg-8">
 
                                                 <input type="text" class="form-control mt-2 mt-lg-0" id="PAC">
 
                                             </div>
 
                                             <div class="col-12 col-md-3 col-lg-12 col-xl-3">
-                                                <a class="reqPacBtn btn btn-info pac text-white float-lg-end mt-2"
+                                                <button
+                                                    class="col-12 reqPacBtn pac btn btn-info pac text-white float-lg-end mt-2"
                                                     id="reqPacBtn">
                                                     Request
                                                     PAC
-                                                </a>
+                                                </button>
                                             </div>
 
                                         </div>
 
-                                        <div class="col-12 d-block d-md-none d-lg-block d-xl-none">
+                                        <div class="col-12 d-block d-md-none">
                                             <p class="text-muted">
                                                 A 6 digit PAC will be sent to your registered mobile phone
                                                 number
-                                                *****6168. Please click "Request PAC" if you wish to proceed
+                                                ***6168. Please click "Request PAC" if you wish to proceed
                                             </p>
+
                                         </div>
 
-                                        <div class="digitPac col-md-6 col-xxl-6 d-none d-md-block d-lg-none d-xl-block">
+                                        <div class="digitPac col-md-6 col-xxl-6 d-none d-md-block">
 
                                             <input type="text" class="form-control mt-2" id="PAC">
 
                                             <p class="text-muted  d-none d-md-block">
                                                 A 6 digit PAC will be sent to your registered mobile phone
                                                 number
-                                                *****6168. Please click "Request PAC" if you wish to proceed
+                                                ***6168. Please click "Request PAC" if you wish to proceed
                                             </p>
 
                                         </div>
 
-                                        <div class="col-md-3 d-none d-md-block d-lg-none d-xl-block">
-                                            <a class="reqPacBtn btn btn-info pac text-white float-md-end mt-2"
+                                        <div class=" col-12 col-md-3 ps-md-1 d-none d-md-block">
+                                            <button class="reqPacBtn col-12 btn btn-info pac text-white  mt-2"
                                                 id="reqPacBtn">
                                                 Request
                                                 PAC
-                                            </a>
+                                            </button>
                                         </div>
 
                                     </div>
@@ -623,13 +624,13 @@
 
                                     <div class="row myFA4 d-none" id="noti" mt-2>
 
-                                        <div class="zz col-3 col-lg-2">
+                                        <div class="zz col-3 col-lg-3 col-xl-2">
                                             <label for="notification" class="col-sm-3 col-form-label">
                                                 <img src="/puvan/icon/twoFA/success.png" alt="" width="90" height="90">
                                             </label>
                                         </div>
 
-                                        <div class="col-md-6 col-lg-9 col-xl-6 col-9 mt-2 mt-lg-0 ms-lg-4">
+                                        <div class="col-md-6 col-lg-6 col-xl-7 col-9 mt-2 mt-lg-0">
 
                                             <p id="notiText">
                                                 A push notification will be sent to your mobile phone. Please verify the
@@ -640,7 +641,7 @@
 
                                         </div>
 
-                                        <div class="d-block d-md-none d-lg-block d-xl-none">
+                                        <div class="d-block d-md-none">
                                             <a class="btn btn-info pac text-white float-lg-end w-100"
                                                 data-bs-toggle="modal" data-bs-target="#staticBackdropPhone">Push
                                                 Notification</a>
@@ -711,10 +712,9 @@
                                             </div>
                                         </div>
 
-                                        <div
-                                            class="col-md-3 col-lg-4 col-xl-3 col-9 d-none d-md-block d-lg-none d-xl-block ms-xl-3">
-                                            <a class="btn btn-info pac text-white float-lg-end mt-2"
-                                                data-bs-toggle="modal" data-bs-target="#staticBackdrop">Push
+                                        <div class="col-md-3 col-9 ps-md-1 d-none d-md-block">
+                                            <a class="btn btn-info col-12 pac text-white  mt-2" data-bs-toggle="modal"
+                                                data-bs-target="#staticBackdrop">Push
                                                 Notification</a>
 
                                             <!-- Modal -->
@@ -833,7 +833,8 @@
                                         </div>
 
                                     </div>
-                                    <p class="timerText" hidden>Time remaining: <span id="time"
+
+                                    <p class="timerText" hidden>Time remaining: <span class="time"
                                             style="color:#d64354"></span></p>
 
                                 </div>
@@ -1039,7 +1040,7 @@
 
     <script>
         var oneMin = 60,
-            display = $('#time');
+            display = $('.time');
 
         function startTimer(duration, display) {
             var timer = duration, minutes, seconds;
@@ -1064,32 +1065,32 @@
             $('#authMethod').change(function () {
                 var selectedIndex = $(this).children('option:selected').index();
                 if (selectedIndex != 0) {
-                    $(this).parent().removeClass('col-sm-12').addClass('col-sm-8 col-lg-12 col-xl-8');
+                    $(this).parent().removeClass('col-sm-12').addClass('col-sm-9');
                     $(this).parent().siblings('.authConfirmBtn').attr('hidden', false);
                 }
 
                 var cases = $("#authMethod option:selected").val();
                 if (cases == "pac") {
-                    $("#PAC").removeClass("d-none");
+                    $("#pac").removeClass("d-none");
                     $("#secure").addClass("d-none");
                     $("#noti").addClass("d-none");
                     $("#token").addClass("d-none");
                 }
                 if (cases == "token") {
                     $("#token").removeClass("d-none");
-                    $("#PAC").addClass("d-none");
+                    $("#pac").addClass("d-none");
                     $("#secure").addClass("d-none");
                     $("#noti").addClass("d-none");
                 }
                 if (cases == "secure") {
                     $("#secure").removeClass("d-none");
-                    $("#PAC").addClass("d-none");
+                    $("#pac").addClass("d-none");
                     $("#token").addClass("d-none");
                     $("#noti").addClass("d-none");
                 }
                 if (cases == "noti") {
                     $("#noti").removeClass("d-none");
-                    $("#PAC").addClass("d-none");
+                    $("#pac").addClass("d-none");
                     $("#token").addClass("d-none");
                     $("#secure").addClass("d-none");
                 }
