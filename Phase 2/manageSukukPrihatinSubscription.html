@@ -516,7 +516,7 @@
 
 
                                 </div>
-                                <div class="col-sm-4 col-lg-12 col-xl-4 ps-sm-1 authConfirmBtn" hidden>
+                                <div class="col-sm-3 ps-sm-1 authConfirmBtn" hidden>
                                     <button class="btn btn-danger bg-primary col-12">Confirm</button>
                                 </div>
 
@@ -538,7 +538,7 @@
 
                                             </div>
 
-                                            <div class="col-3 col-sm-2 col-lg-3 col-xl-2">
+                                            <div class="col-12 col-md-3">
                                                 <button
                                                     class="col-12 reqPacBtn pac btn btn-info pac text-white float-lg-end mt-2"
                                                     id="reqPacBtn">
@@ -570,7 +570,7 @@
 
                                         </div>
 
-                                        <div class=" col-12 col-md-4 ps-md-1 d-none d-md-block">
+                                        <div class=" col-12 col-md-3 ps-md-1 d-none d-md-block">
                                             <button class="reqPacBtn col-12 btn btn-info pac text-white  mt-2"
                                                 id="reqPacBtn">
                                                 Request
@@ -624,13 +624,13 @@
 
                                     <div class="row myFA4 d-none" id="noti" mt-2>
 
-                                        <div class="zz col-3 col-sm-2 col-lg-3 col-xl-2">
+                                        <div class="zz col-3 col-lg-3 col-xl-2">
                                             <label for="notification" class="col-sm-3 col-form-label">
                                                 <img src="/puvan/icon/twoFA/success.png" alt="" width="90" height="90">
                                             </label>
                                         </div>
 
-                                        <div class="col-9 col-lg-9 mt-2 mt-lg-0 col-xl-6">
+                                        <div class="col-md-6 col-lg-6 col-xl-7 col-9 mt-2 mt-lg-0">
 
                                             <p id="notiText">
                                                 A push notification will be sent to your mobile phone. Please verify the
@@ -712,10 +712,10 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-4 col-12 ps-md-1 d-none d-md-block col-lg-12 col-xl-4">
-                                            <button class="btn btn-info col-12 pac text-white  mt-2"
-                                                data-bs-toggle="modal" data-bs-target="#staticBackdrop">Push
-                                                Notification</button>
+                                        <div class="col-md-3 col-9 ps-md-1 d-none d-md-block">
+                                            <a class="btn btn-info col-12 pac text-white  mt-2" data-bs-toggle="modal"
+                                                data-bs-target="#staticBackdrop">Push
+                                                Notification</a>
 
                                             <!-- Modal -->
 
@@ -1134,7 +1134,7 @@
                     $('.newAccNumber').prop("hidden", false);
                 }
             });
-            $('.pac').on('click', function () {
+            $('.reqPacBtn').on('click', function () {
                 $(this).attr('disabled', true);
                 $('.timerText').prop("hidden", false);
                 startTimer(oneMin, display);
@@ -1212,6 +1212,15 @@
         $('.btnReset').on('click', function () {
             $('form')[0].reset();
         });
+
+        var progressBar = $('.progress-bar');
+        var progressNumber = 0;
+
+        setInterval(function () {
+            progressNumber++;
+            progressBar.css('width', progressNumber + '%');
+            progressBar.attr('aria-valuenow', progressNumber);
+        }, 500);
 
     </script>
 </body>
